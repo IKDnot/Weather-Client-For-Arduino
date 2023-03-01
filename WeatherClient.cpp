@@ -1,13 +1,20 @@
 #include "WeatherClient.h"
 
-WeatherClient::WeatherClient(const char* ssid, const char* password, const char* city, const char* apiKey, bool displayAsCelsius) 
-: _ssid(ssid),
-  _password(password),
-  _city(city),
-  _apiKey(apiKey),
-  _displayAsCelsius(displayAsCelsius),
-  _weather(0)
-{};
+WeatherClient::WeatherClient(const char* ssid, const char* password, const char* city, const char* apiKey, bool displayAsCelsius)
+  : _ssid(ssid),
+    _password(password),
+    _city(city),
+    _apiKey(apiKey),
+    _displayAsCelsius(displayAsCelsius),
+    _weather(0)
+{
+    _weather = new Weather;
+}
+
+WeatherClient::~WeatherClient(){
+  delete _weather;
+  _weather = 0;
+}
 
 float WeatherClient::getMaxTemperature() {
   return _weather->maxTemp;

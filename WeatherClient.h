@@ -16,6 +16,7 @@ typedef struct {
 class WeatherClient {
   public:
     WeatherClient(const char* ssid, const char* password, const char* city, const char* apiKey, bool displayAsCelsius = true);
+    ~WeatherClient();
     float getMaxTemperature();
     float getMinTemperature();
     uint getWeatherId();
